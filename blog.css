@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: #334464;
+}
+
+main {
+    width: 100%;
+    background: #334464;
+
+}
+
+nav {
+    position: fixed;
+}
+
+.username {
+    color: white;
+    text-decoration: none;
+}
+
+.offcanvas-header>.btn,
+.offcanvas-body button {
+    background: #7234fa;
+    width: auto;
+    color: white;
+}
+
+.offcanvas-header>.btn:hover,
+.offcanvas-body button:hover {
+    background: #622dd4;
+    width: auto;
+    color: white;
+}
+
+.dropdown-menu button {
+    background: #7234fa;
+    width: 90%;
+    color: white;
+}
+
+.dropdown-menu button:hover {
+    background: #622dd4;
+}
+
+.dropdown-menu a {
+    width: 100%;
+    padding: 5%;
+    text-decoration: none;
+    color: white;
+}
+
+.btn a {
+    color: white;
+    text-decoration: none;
+}
+
+#username {
+    color: white;
+    font-weight: bold;
+}
+
+.des {
+    width: 100%;
+    background-color: #ddd8ce;
+    margin-top: 70px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cards {
+    width: 95%;
+    margin: 0% auto;
+    padding-top: 40px;
+    background-color: none;
+    position: relative;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    gap: 40px;
+}
