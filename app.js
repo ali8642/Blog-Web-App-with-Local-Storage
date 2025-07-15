@@ -98,12 +98,7 @@ function login() {
 const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
 // Redirect if not logged in
-if (!user) {
-  alert("You're not logged in!");
-  window.location.href = "index.html";
-} else {
-  document.getElementById("username").innerText = user.fname + " " + user.lname;
-}
+document.getElementById("username").innerText = user.fname + " " + user.lname;
 
 function addBlog() {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
