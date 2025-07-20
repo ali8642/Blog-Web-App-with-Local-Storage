@@ -37,7 +37,7 @@
                 <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                     aria-labelledby="offcanvasDarkNavbarLabel">
                     <div class="offcanvas-header">
-                        <button type="button" class="btn">+ New Blog</button>
+
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
@@ -62,62 +62,46 @@
             <h3>You can create new blogs here!</h3>
         </div>
 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary blogbtn" data-bs-toggle="modal"
+            data-bs-target="#exampleModalCenter">+
+            New Blog</button>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Enter your Blog Details here...</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Blog Image</label>
+                                <input type="file" class="form-control" id="blog-img">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Blog Title:</label>
+                                <input type="text" class="form-control" id="blog-title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Blog Content:</label>
+                                <textarea class="form-control" id="blog-content"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="addBlog()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- BLOG CARD SECTION -->
-        <div class="cards">
-            <div class="card" style="width: 18rem;">
-                <img src="./assets/blog1.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="./assets/blog2.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="./assets/blog3.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="./assets/blog4.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="./assets/blog5.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="./assets/blog6.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+        <div class="cards"></div>
+
 
     </main>
 
@@ -125,6 +109,7 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
     <script src="app.js"></script>
+
 </body>
 
 </html>

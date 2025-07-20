@@ -100,7 +100,35 @@ const user = JSON.parse(localStorage.getItem("loggedInUser"));
 // Redirect if not logged in
 document.getElementById("username").innerText = user.fname + " " + user.lname;
 
+// BLOG SHOW FUNCTION
+function showBlogCard(blog, index) {
+  const cardsContainer = document.querySelector(".cards");
+
+  const card = document.createElement("div");
+  card.className = "card";
+  card.style.width = "18rem";
+
+  card.innerHTML = `
+    <img src="${
+      blog.img || "./assets/placeholder.jpg"
+    }" class="card-img-top" alt="Blog Image">
+    <div class="card-body">
+      <h5 class="card-title">${blog.title}</h5>
+      <p class="card-text">${blog.content}</p>
+      <p class="text-muted" style="font-size: 0.8rem;">Posted by ${
+        blog.author
+      }<br>${blog.createdAt}</p>
+      <button class="btn btn-danger btn-sm" onclick="deleteBlog(${index})">Delete</button>
+    </div>
+  `;
+
+  cardsContainer.appendChild(card);
+}
+
+// BLOG ADD FUNCTION
 function addBlog() {
+  console.log("addBlog function just ran");
+
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   if (!loggedInUser) {
     alert("You must be logged in to post a blog.");
@@ -109,21 +137,64 @@ function addBlog() {
 
   let title = document.getElementById("blog-title").value.trim();
   let content = document.getElementById("blog-content").value.trim();
+  let imgInput = document.getElementById("blog-img");
 
   if (!title || !content) {
     alert("Please fill in all blog fields");
     return;
   }
 
+  let file = imgInput.files[0];
+  let imageUrl = file ? URL.createObjectURL(file) : "./assets/placeholder.jpg";
+
   let blog = {
     author: loggedInUser.email.toLowerCase(),
-    title: title,
-    content: content,
+    title,
+    content,
+    img: imageUrl,
     createdAt: new Date().toLocaleString(),
   };
 
   let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
   blogs.push(blog);
   localStorage.setItem("blogs", JSON.stringify(blogs));
+
+  showBlogCard(blog);
+
+  // Reset form
+  document.getElementById("blog-title").value = "";
+  document.getElementById("blog-content").value = "";
+  imgInput.value = "";
+
+  // Close modal
+  const modal = bootstrap.Modal.getInstance(
+    document.getElementById("exampleModalCenter")
+  );
+  modal.hide();
+
   alert("Blog posted successfully!");
 }
+
+// SHOW ALL BLOGS ON PAGE RELOAD
+window.addEventListener("DOMContentLoaded", () => {
+  const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  blogs.reverse().forEach(showBlogCard);
+});
+
+// BLOG DELETE FUNCTION
+function deleteBlog(index) {
+  let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  blogs.splice(index, 1);
+  localStorage.setItem("blogs", JSON.stringify(blogs));
+  renderAllBlogs(); // refresh all cards
+}
+
+// SHOW CURRENT SAVED BLOGS
+function renderAllBlogs() {
+  const cardsContainer = document.querySelector(".cards");
+  cardsContainer.innerHTML = "";
+  const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  blogs.forEach((blog, index) => showBlogCard(blog, index));
+}
+
+window.addEventListener("DOMContentLoaded", renderAllBlogs);

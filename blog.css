@@ -57,6 +57,12 @@ nav {
     text-decoration: none;
 }
 
+.blogbtn {
+    position: relative;
+    left: 12px;
+    top: 12px;
+}
+
 #username {
     color: white;
     font-weight: bold;
@@ -81,4 +87,65 @@ nav {
     flex-flow: wrap;
     justify-content: flex-start;
     gap: 40px;
+}
+
+/* Responsiveness */
+/* Small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 90% !important;
+    }
+
+    .navbar-brand img {
+        width: 30px;
+    }
+
+    .dropdown-center button img {
+        width: 30px;
+    }
+
+    .blogbtn {
+        width: 90%;
+        left: 0;
+        top: 16px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .des h3 {
+        font-size: 1rem;
+        padding: 6px;
+    }
+
+    .modal-dialog {
+        margin: 1rem;
+    }
+}
+
+/* Medium devices (tablets, less than 768px) */
+@media (max-width: 767.98px) {
+    .cards {
+        justify-content: center;
+    }
+
+    .card {
+        width: 80% !important;
+    }
+
+    .des h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Large devices (small laptops, less than 992px) */
+@media (max-width: 991.98px) {
+    .card {
+        width: 45% !important;
+    }
 }
