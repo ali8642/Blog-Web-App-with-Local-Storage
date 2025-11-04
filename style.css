@@ -89,6 +89,7 @@ form.active {
     background: #ddd8ce;
     z-index: 5;
     transition: clip-path 0.3s;
+    border-radius: 1rem;
 }
 
 .login-label {
@@ -150,4 +151,72 @@ form button:hover {
 
 .form-text a {
     color: #334464;
+}
+
+/* ============================ */
+/* === RESPONSIVE STYLES === */
+/* ============================ */
+
+@media (max-width: 768px) {
+
+    /* 1. Hide the image divs like you asked */
+    .login,
+    .signup {
+        display: none;
+    }
+
+    /* 2. Make the main box one column and full width */
+    main {
+        grid-template-columns: 1fr;
+        /* Stack everything */
+        max-width: 100%;
+        margin: 50px auto 0;
+        /* Less space at the top */
+        padding: 0 20px;
+        /* Add padding on the sides */
+    }
+
+    /* 3. Make the form container one column */
+    .back-layer {
+        grid-template-columns: 1fr;
+        /* Stack forms */
+        grid-column: 1 / 2;
+        /* Make it fill the new 1-column 'main' */
+
+        /* This stops the JS clip-path from breaking the mobile layout.
+           The other 'transform' animation still works! */
+        clip-path: none !important;
+    }
+
+    /* 4. Make sure forms stack in the new 1-column layout */
+    .login-form,
+    .signup-form {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        transform: none !important;
+    }
+
+    /* 5. Stop the form from having a fixed height */
+    form {
+        height: auto;
+        /* Let the form size itself */
+        /* min-height: 480px; Still give it some space */
+
+        /* Setup the fade animation */
+        transition: opacity 0.4s ease, visibility 0.4s;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    form.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* 6. Make the title a bit smaller */
+    .login-label {
+        font-size: 32px;
+    }
 }
